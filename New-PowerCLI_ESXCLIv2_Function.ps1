@@ -147,7 +147,7 @@ function new-PowerCLI_ESXCLIv2_Function{
 					}					
 					$NewOutputWithTab = "`t" +'[Parameter(Mandatory=$true,ValueFromPipeline=$true)]'
 					$Global:Stream.WriteLine($NewOutputWithTab)
-					$NewOutputWithTab = "`t" +'[VMware.VimAutomation.ViCore.Impl.V1.Inventory.VMHostImpl[]]$VMhost'
+					$NewOutputWithTab = "`t" +'[VMware.VimAutomation.ViCore.Types.V1.Inventory.VMHost[]]$VMhost'
 					$Global:Stream.WriteLine($NewOutputWithTab)
 					$NewOutputWithTab = "`t" + ')'
 					$Global:Stream.WriteLine($NewOutputWithTab)
