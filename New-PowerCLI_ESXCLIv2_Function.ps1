@@ -226,7 +226,7 @@ function new-PowerCLI_ESXCLIv2_Function{
 												If(($Key -eq "host") -or ($Key -eq "profile") -or ($Key -eq "version") -or ($Key -eq "debug")){
 												$Key = $Key + "2"
 												}											
-											$NewOutputWithTab = "`t`t`t`t" + 'if($' + $Key + '){'
+											$NewOutputWithTab = "`t`t`t`t" + 'if($PSBoundParameters.ContainsKey(''' + $Key + ''')){'
 											$Global:Stream.WriteLine("$NewOutputWithTab")
 											
 												#For each parameter we check that it is available in the hashtable for this build and we update the value accordingly											
@@ -285,7 +285,7 @@ function new-PowerCLI_ESXCLIv2_Function{
 													If(($Key -eq "host") -or ($Key -eq "profile") -or ($Key -eq "version") -or ($Key -eq "debug")){
 													$Key = $Key + "2"
 													}
-												$AllParameters = $AllParameters + ' -or $' + $Key		
+												$AllParameters = $AllParameters + ' -or $PSBoundParameters.ContainsKey(''' + $Key + ''')'		
 
 												}
 												$AllParameters = $AllParameters.replace('Start -or ','')
@@ -359,6 +359,6 @@ function new-PowerCLI_ESXCLIv2_Function{
 #$esxcli = get-esxcli -v2 -vmhost $MyHost
 
 #$Global:Stream.close()
-#$Global:Stream = [System.IO.StreamWriter] "C:\temp\Get-EsxCLI_on_steroids_22-06-2016.ps1"
+#$Global:Stream = [System.IO.StreamWriter] "C:\temp\Get-EsxCLI_on_steroids_21-07-2016.ps1"
 #new-PowerCLI_ESXCLIv2_Function -ToAnalyse $esxcli
 #$Global:Stream.close()
